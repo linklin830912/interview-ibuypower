@@ -1,0 +1,9 @@
+.container_div {
+  color: white;
+  background-color: #ff1b1b;
+  width: 75px;
+  height: 23px;
+  padding-top: 3px;
+  text-align: center;
+  border-radius: 20px;
+}

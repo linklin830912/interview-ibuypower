@@ -1,0 +1,8 @@
+.container_button {
+  width: 111px;
+  height: 38px;
+  border-radius: 19px;
+  border: solid 2px #ff1b1b;
+  color: #ff1b1b;
+  background-color: transparent;
+}

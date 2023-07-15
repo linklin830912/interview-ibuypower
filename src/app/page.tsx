@@ -11,6 +11,7 @@ import { productDetails } from "./models/product/productDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ProductPanel from "./components/product/ProductPanel";
 import ApplicationContext from "./components/contexts/ApplicationContext";
+import NextButton from "./components/styling/buttons/NextButton";
 
 export default function Home() {
   const applicationLimitWidth = 768;
@@ -38,6 +39,10 @@ export default function Home() {
         <div className={style.container_div}>
           <h1>Best Seller Gaming PC</h1>
           <h3>Prebuild & Customer</h3>
+          <div className={style.paginate_div}>
+            <NextButton />
+            <NextButton isFlip={true} />
+          </div>
           <div className={style.product_div}>
             <ProductPanel />
           </div>
