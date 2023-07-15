@@ -9,26 +9,29 @@ import NextButton from "./components/styling/buttons/NextButton";
 export default function Home() {
   const applicationLimitWidth = 768;
   const queryClient = new QueryClient();
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isMobile, setIsMobile] = useState<boolean>(
-    window.innerWidth >= applicationLimitWidth ? false : true
+    windowWidth >= applicationLimitWidth ? false : true
   );
-
+  console.log("!!!usestate");
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    console.log("!!!resize");
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
   }, []);
+
   useEffect(() => {
     if (windowWidth >= applicationLimitWidth) {
       setIsMobile(false);
     } else {
       setIsMobile(true);
     }
+    console.log("!!!setMobil", windowWidth);
   }, [windowWidth]);
 
   const [productStart, setProductStart] = useState(0);
-  // const [productCount, setProductCount] = useState(isMobile ? 1 : 0);
 
   return (
     <ApplicationContext.Provider value={{ isMobile: isMobile }}>
@@ -58,4 +61,7 @@ export default function Home() {
       </QueryClientProvider>
     </ApplicationContext.Provider>
   );
+}
+function componentDidMount() {
+  throw new Error("Function not implemented.");
 }
