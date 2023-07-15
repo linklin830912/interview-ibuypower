@@ -4,7 +4,11 @@ import ProductGrid from "./ProductGrid";
 import style from "./styles/productPanelStyle.module.css";
 import ApplicationContext from "../contexts/ApplicationContext";
 
-function ProductPanel() {
+type productPanelProps = {
+  startProductIndex: number;
+};
+
+function ProductPanel(props: productPanelProps) {
   const { isMobile } = useContext(ApplicationContext);
 
   const {
@@ -12,12 +16,12 @@ function ProductPanel() {
     refetch,
     isLoading,
   } = useGetProductDetails({
-    start: 0,
+    start: props.startProductIndex,
     count: isMobile ? 1 : 4,
   });
   useEffect(() => {
     refetch();
-  }, [isMobile, refetch]);
+  }, [isMobile, props.startProductIndex, refetch]);
 
   return (
     <div className={style.container_div}>

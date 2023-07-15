@@ -1,13 +1,6 @@
 "use client";
-import Image from "next/image";
 import style from "./page.module.css";
-import Panel from "./components/styling/panels/Panel";
-import {
-  getProductDetails,
-  useGetProductDetails,
-} from "./apis/product/getProductDetails";
 import { useEffect, useState } from "react";
-import { productDetails } from "./models/product/productDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ProductPanel from "./components/product/ProductPanel";
 import ApplicationContext from "./components/contexts/ApplicationContext";
@@ -33,18 +26,33 @@ export default function Home() {
       setIsMobile(true);
     }
   }, [windowWidth]);
+
+  const [productStart, setProductStart] = useState(0);
+  // const [productCount, setProductCount] = useState(isMobile ? 1 : 0);
+
   return (
     <ApplicationContext.Provider value={{ isMobile: isMobile }}>
       <QueryClientProvider client={queryClient} contextSharing={true}>
         <div className={style.container_div}>
           <h1>Best Seller Gaming PC</h1>
           <h3>Prebuild & Customer</h3>
-          <div className={style.paginate_div}>
-            <NextButton />
-            <NextButton isFlip={true} />
-          </div>
+
+          {!isMobile && (
+            <div className={style.paginate_div}>
+              <NextButton
+                onClick={() =>
+                  setProductStart(productStart - 1 > 0 ? productStart : 0)
+                }
+              />
+              <NextButton
+                onClick={() => setProductStart(productStart + 1)}
+                isFlip={true}
+              />
+            </div>
+          )}
+
           <div className={style.product_div}>
-            <ProductPanel />
+            <ProductPanel startProductIndex={productStart} />
           </div>
         </div>
       </QueryClientProvider>

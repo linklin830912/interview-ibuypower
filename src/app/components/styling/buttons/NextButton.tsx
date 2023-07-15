@@ -1,11 +1,12 @@
 import React from "react";
 import style from "./styles/nextButtonStyle.module.css";
 type nextButtonProps = {
+  onClick: () => void;
   isFlip?: boolean;
 };
 function NextButton(props: nextButtonProps) {
   return (
-    <button className={style.container_button}>
+    <button className={style.container_button} onClick={props.onClick}>
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45">
           <polyline
