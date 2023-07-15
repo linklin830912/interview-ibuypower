@@ -13,7 +13,7 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean>(
     windowWidth >= applicationLimitWidth ? false : true
   );
-  componentDidMount(() => setWindowWidth(window.innerWidth));
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
@@ -61,5 +61,5 @@ export default function Home() {
 }
 function componentDidMount(func: () => void) {
   func();
-  throw new Error("Function not implemented.");
+  // throw new Error("Function not implemented.");
 }
