@@ -9,14 +9,12 @@ import NextButton from "./components/styling/buttons/NextButton";
 export default function Home() {
   const applicationLimitWidth = 768;
   const queryClient = new QueryClient();
-  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState<number>(1080);
   const [isMobile, setIsMobile] = useState<boolean>(
     windowWidth >= applicationLimitWidth ? false : true
   );
-  console.log("!!!usestate");
+  componentDidMount(() => setWindowWidth(window.innerWidth));
   useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    console.log("!!!resize");
     window.addEventListener("resize", () => {
       setWindowWidth(window.innerWidth);
     });
@@ -28,7 +26,6 @@ export default function Home() {
     } else {
       setIsMobile(true);
     }
-    console.log("!!!setMobil", windowWidth);
   }, [windowWidth]);
 
   const [productStart, setProductStart] = useState(0);
@@ -62,6 +59,7 @@ export default function Home() {
     </ApplicationContext.Provider>
   );
 }
-function componentDidMount() {
+function componentDidMount(func: () => void) {
+  func();
   throw new Error("Function not implemented.");
 }
