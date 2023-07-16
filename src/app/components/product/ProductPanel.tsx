@@ -10,7 +10,6 @@ type productPanelProps = {
 
 function ProductPanel(props: productPanelProps) {
   const { isMobile } = useContext(ApplicationContext);
-
   const {
     data: producDetailsData,
     refetch,
