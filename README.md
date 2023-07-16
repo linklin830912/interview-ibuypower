@@ -5,4 +5,8 @@ requirement link: https://github.com/iBuypowerUS/Front-End-Developer-Exam
 
 ## Display - Deploy on Vercel
 
-https://interview-ibuypower-jwbj-lg3g1z78v-linklin830912.vercel.app/
+https://interview-ibuypower-jwbj-j5xjc01da-linklin830912.vercel.app/
+
+## Other resources image APIs
+
+https://random.imagecdn.app
