@@ -11,7 +11,7 @@
 @media screen and (max-width: 768px) {
   .container_div {
     width: 398px;
-    height: 60vh;
+    height: 75vh;
     overflow: hidden;
     position: relative;
     display: flex;
