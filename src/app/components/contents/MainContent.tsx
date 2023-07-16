@@ -40,7 +40,6 @@ function MainContent(props: mainContentProps) {
         }
       }}
     >
-      <div>{productStart}</div>
       {!isMobile && (
         <>
           <h1>Best Seller Gaming PC</h1>
