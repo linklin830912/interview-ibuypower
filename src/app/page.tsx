@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import ProductPanel from "./components/product/ProductPanel";
 import ApplicationContext from "./components/contexts/ApplicationContext";
 import NextButton from "./components/styling/buttons/NextButton";
+import LoadingSpinner from "./components/styling/loadings/LoadingSpinner";
 
 export default function Home() {
   const applicationLimitWidth = 768;
@@ -49,12 +50,12 @@ export default function Home() {
               isFlip={true}
             />
           </div>
-
-          {containerRef.current?.getBoundingClientRect().width != undefined && (
-            <div className={style.product_div}>
-              <ProductPanel startProductIndex={productStart} />
-            </div>
-          )}
+          <div className={style.product_div}>
+            {containerRef.current?.getBoundingClientRect().width ===
+              undefined && <LoadingSpinner />}
+            {containerRef.current?.getBoundingClientRect().width !==
+              undefined && <ProductPanel startProductIndex={productStart} />}
+          </div>
         </div>
       </QueryClientProvider>
     </ApplicationContext.Provider>
