@@ -32,24 +32,30 @@ export default function Home() {
       setIsMobile(true);
     }
   }
-
   return (
     <ApplicationContext.Provider value={{ isMobile: isMobile }}>
       <QueryClientProvider client={queryClient} contextSharing={true}>
         <div className={style.container_div} ref={containerRef}>
-          <h1>Best Seller Gaming PC</h1>
-          <h3>Prebuild & Customer</h3>
-          <div className={style.paginate_div}>
-            <NextButton
-              onClick={() =>
-                setProductStart(productStart - 1 >= 0 ? productStart - 1 : 0)
-              }
-            />
-            <NextButton
-              onClick={() => setProductStart(productStart + 1)}
-              isFlip={true}
-            />
-          </div>
+          {!isMobile && (
+            <>
+              <h1>Best Seller Gaming PC</h1>
+              <h3>Prebuild & Customer</h3>
+              <div className={style.paginate_div}>
+                <NextButton
+                  onClick={() =>
+                    setProductStart(
+                      productStart - 1 >= 0 ? productStart - 1 : 0
+                    )
+                  }
+                />
+                <NextButton
+                  onClick={() => setProductStart(productStart + 1)}
+                  isFlip={true}
+                />
+              </div>
+            </>
+          )}
+
           <div className={style.product_div}>
             {containerRef.current?.getBoundingClientRect().width ===
               undefined && <LoadingSpinner />}
