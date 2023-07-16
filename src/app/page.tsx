@@ -1,6 +1,6 @@
 "use client";
 import style from "./page.module.css";
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ProductPanel from "./components/product/ProductPanel";
 import ApplicationContext from "./components/contexts/ApplicationContext";
@@ -10,8 +10,8 @@ export default function Home() {
   const applicationLimitWidth = 768;
   const queryClient = new QueryClient();
   const containerRef = useRef<HTMLDivElement>(null);
-
   const [isMobile, setIsMobile] = useState<boolean>();
+  const [productStart, setProductStart] = useState(0);
 
   useEffect(() => {
     setIsMobileFromWidth();
@@ -32,8 +32,6 @@ export default function Home() {
     }
   }
 
-  const [productStart, setProductStart] = useState(0);
-
   return (
     <ApplicationContext.Provider value={{ isMobile: isMobile }}>
       <QueryClientProvider client={queryClient} contextSharing={true}>
@@ -43,7 +41,7 @@ export default function Home() {
           <div className={style.paginate_div}>
             <NextButton
               onClick={() =>
-                setProductStart(productStart - 1 > 0 ? productStart : 0)
+                setProductStart(productStart - 1 >= 0 ? productStart - 1 : 0)
               }
             />
             <NextButton
